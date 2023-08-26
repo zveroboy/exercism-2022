@@ -1,0 +1,10 @@
+{
+  "cSpell.words": [
+    "sublist",
+    "superlist"
+  ],
+  "rust-analyzer.linkedProjects": [
+    "./Cargo.toml",
+    "./Cargo.toml"
+  ]
+}
