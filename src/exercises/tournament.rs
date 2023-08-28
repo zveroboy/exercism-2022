@@ -94,7 +94,7 @@ mod tournament {
         let mut results: HashMap<&str, Team> = HashMap::new();
         for line in input.lines() {
             println!("line: {}", line);
-            let Some((team1_name,team2_name, match_result)) = parse_line(line) else {
+            let Some((team1_name, team2_name, match_result)) = parse_line(line) else {
                 continue;
             };
 
