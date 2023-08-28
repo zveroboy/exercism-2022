@@ -1,11 +1,10 @@
 [package]
-name = "exercism-2022"
+name = "exercism_2022"
 version = "0.1.0"
 edition = "2021"
 
 [features]
 grapheme = []
-test = []
 
 [dependencies]
 time = "0.3.20"
