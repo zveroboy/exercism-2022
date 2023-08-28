@@ -110,10 +110,11 @@ fn test_all_three_anthems_3_workers() {
 #[test]
 #[ignore]
 fn test_non_integer_multiple_of_threads() {
-    let v = vec!["abc"; 999];
+    let len = 999;
+    let v = vec!["abc"; len];
     let mut hm = HashMap::new();
-    hm.insert('a', 999);
-    hm.insert('b', 999);
-    hm.insert('c', 999);
+    hm.insert('a', len);
+    hm.insert('b', len);
+    hm.insert('c', len);
     assert_eq!(frequency::frequency(&v[..], 4), hm);
 }

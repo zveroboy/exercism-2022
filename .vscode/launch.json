@@ -30,20 +30,36 @@
         "args": [
           "test",
           "--no-run",
-          "--bin=exercism_2022",
-          "--package=exercism_2022",
+          "--lib",
         ],
         "filter": {
           "name": "exercism_2022",
-          "kind": "bin"
+          "kind": "lib"
         }
       },
       "args": [
         "--include-ignored",
-        "--nocapture",
-        "parallel_letter_frequency::test_many_times_same_text"
+        // "--nocapture",
+        "parallel_letter_frequency"
       ],
       "cwd": "${workspaceFolder}"
-    }
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug e2e tests in executable 'exercism_2022'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--test=parallel_letter_frequency",
+        ],
+      },
+      "args": [
+        "--include-ignored",
+        "test_non_integer_multiple_of_threads"
+      ],
+      "cwd": "${workspaceFolder}"
+    },
   ]
 }
