@@ -1,5 +1,5 @@
 use exercism_2022::exercises::parallel_letter_frequency as frequency;
-use std::collections::HashMap;
+use std::{borrow::BorrowMut, collections::HashMap, mem::{size_of, align_of}, rc::Rc};
 
 // Poem by Friedrich Schiller. The corresponding music is the European Anthem.
 const ODE_AN_DIE_FREUDE: [&str; 8] = [
@@ -117,4 +117,66 @@ fn test_non_integer_multiple_of_threads() {
     hm.insert('b', len);
     hm.insert('c', len);
     assert_eq!(frequency::frequency(&v[..], 4), hm);
+}
+
+#[test]
+fn foo() {
+    // #[derive(Debug)]
+    // struct Foo<'a>(&'a str, bool, i64);
+
+    // let x = Foo("aaa", true, 3);
+
+    // // |  x  |         y         |         z        
+    // // | Foo | <- 0x700007e3f548 | <- 0x700007e3f568
+    // let y = &x as *const _;
+    // let z1 = &y as *const _;
+    // let z2 = &z1 as *const _;
+    // let diff = z2 as usize - z1 as usize;
+
+    // println!("{x:?} {y:p} {z1:p} {z2:p} {diff}");
+    // println!("{:?}", size_of::<Foo>());
+    // // println!("{:?}", size_of::<&Foo>());
+    // println!("{:?}", align_of::<Foo>());
+    // println!("{:?}", size_of::<i8>());
+    // println!("{:?}", size_of::<[i16; 2]>());
+    // println!("{:?}", size_of::<Vec<i64>>());
+    // // println!("{:?}", size_of::<&mut i8>());
+    // // println!("{:?}", align_of::<&i8>());
+    // // println!("{:?}", size_of::<&i32>());
+    // // println!("{:?}", size_of::<&mut i32>());
+    // // println!("{:?}", align_of::<&i32>());
+    // // println!("{:?}", size_of::<i8>());
+    // // println!("{:?}", size_of::<i32>());
+    // // println!("{:?}", align_of::<&str>());
+    // // println!("{:?}", align_of::<&i32>());
+
+    // Slice and vec
+    // let a = [123, 234, 456];
+    // let b = &a[0..2];
+
+    // println!("{:?}", a);
+    // println!("{:?} {:p}", b, b);
+
+    // let v = vec![123, 234, 456];
+    // let v1 = v.as_ptr();
+    // let w = &v[0..2];
+
+    // println!("{:?} {:?}", v, v);
+    // println!("{:?} {:p}", v, v1);
+
+    // let s1 = "aaa";
+    // let s2 = s1.clone();
+    // println!("{:p} {:p} {:p}", s1, s2, s3);
+    
+    let S1 = String::from("bbb");
+    let s1_ptr = S1.as_ptr();
+    println!("{:?} {:p}", S1, s1_ptr); 
+
+
+    let Rc1 = Rc::new(String::from("ccc"));
+    println!("{:?} {:p}", "Rc1.as_ptr()", Rc1.as_ptr());
+
+    // println!("{:?}", size_of::<&[i8]>());
+    // println!("{:?}", size_of::<&str>());
+    // println!("{:?}", size_of::<String>());
 }

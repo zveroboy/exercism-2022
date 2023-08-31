@@ -6,34 +6,46 @@ use test::Bencher;
 
 use exercism_2022::exercises::parallel_letter_frequency;
 
+// #[bench]
+// fn bench_tiny_parallel(b: &mut Bencher) {
+//     let tiny = &["a"];
+//     b.iter(|| parallel_letter_frequency::frequency(tiny, 3));
+// }
+
+// #[bench]
+// fn bench_tiny_sequential(b: &mut Bencher) {
+//     let tiny = &["a"];
+//     b.iter(|| frequency(tiny));
+// }
+
+// #[bench]
+// fn bench_small_parallel(b: &mut Bencher) {
+//     let texts = all_texts(1);
+//     b.iter(|| parallel_letter_frequency::frequency(&texts, 3));
+// }
+
+// #[bench]
+// fn bench_small_sequential(b: &mut Bencher) {
+//     let texts = all_texts(1);
+//     b.iter(|| frequency(&texts));
+// }
+
 #[bench]
-fn bench_tiny_parallel(b: &mut Bencher) {
-    let tiny = &["a"];
-    b.iter(|| parallel_letter_frequency::frequency(tiny, 3));
+fn bench_large_parallel_mutex(b: &mut Bencher) {
+    let texts = all_texts(30);
+    b.iter(|| parallel_letter_frequency::mutex::frequency(&texts, 3));
 }
 
 #[bench]
-fn bench_tiny_sequential(b: &mut Bencher) {
-    let tiny = &["a"];
-    b.iter(|| frequency(tiny));
-}
-
-#[bench]
-fn bench_small_parallel(b: &mut Bencher) {
-    let texts = all_texts(1);
-    b.iter(|| parallel_letter_frequency::frequency(&texts, 3));
-}
-
-#[bench]
-fn bench_small_sequential(b: &mut Bencher) {
-    let texts = all_texts(1);
-    b.iter(|| frequency(&texts));
-}
-
-#[bench]
-fn bench_large_parallel(b: &mut Bencher) {
+fn bench_large_parallel_channels(b: &mut Bencher) {
     let texts = all_texts(30);
     b.iter(|| parallel_letter_frequency::frequency(&texts, 3));
+}
+
+#[bench]
+fn bench_large_parallel_scope(b: &mut Bencher) {
+    let texts = all_texts(30);
+    b.iter(|| parallel_letter_frequency::scope::frequency(&texts, 3));
 }
 
 #[bench]
