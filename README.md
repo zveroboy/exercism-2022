@@ -1,0 +1,1 @@
+Solutions for Rust exercises from [Exercism.org]https://exercism.org/tracks/rust/exercises
